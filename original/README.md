@@ -1,7 +1,6 @@
 
- cloned from https://github.com/huisaddison/tc-ocean-methods/
+'Orignal' directoy is  cloned from https://github.com/huisaddison/tc-ocean-methods/
 
-This repo is for the author's own dissertation analysis of TC impacts on OMZ changes in the ETNP following TC oveprass
 
 From Addison's repo:
 
