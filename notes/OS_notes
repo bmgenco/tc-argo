@@ -1,0 +1,4 @@
+sepalized conda installs
+
+added conda forge as repo to argo env
+packages: comocean

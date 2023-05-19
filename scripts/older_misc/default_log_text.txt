@@ -1,0 +1,12 @@
+log_'date'.txt default text:
+
+this log_'date'.txt files gives: 
+
+A: Run descriptors (run time, etc.)
+		AND
+B: Content of three files used in the particular run:
+
+(1) 'current_run.sh' used to complete a run
+(2) 'current_settings.py' defines global variables including data directories
+(3) 'current_pipline.py" runs all relevant scripts in a particular order
+

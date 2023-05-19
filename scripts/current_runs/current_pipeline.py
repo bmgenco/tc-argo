@@ -1,8 +1,12 @@
-from datetime import datetime
+rom datetime import datetime
+import sys
 import os
 import subprocess
-
 from tools import replace
+
+# need to come up with standard setting import
+#from settings import *
+# import settings
 
 def matlab_run(script: str, replacement_dict: dict = {}):
     timestamp = datetime.now()
@@ -22,27 +26,50 @@ def matlab_run(script: str, replacement_dict: dict = {}):
     os.remove(f_out)
     return 
 
-## A01 original
-# YEARS_LIST = [
-#         '2007_2010',
-#         '2011_2014',
-#         '2015_2016',
-#         '2017_2018',
-# ]
+# run scripts in squentail order gird only?
+#
 
-## A01 BG
-YEARS_LIST = [
-        '2007_2010',
-        '2011_2014',
-        '2015_2016',
-        '2017_2018',
-        '2018_2019',
-        '2019_2020',
-        '2020_2021',
-        '2021_2022',
-        '2022_2023',       
-]
+# 1. B00
+# 2. B01
+    ##3. A00 ->>> not in original pipile infe file
+# 14. A01
+# 5. A02
+# 6. A03
+# 7. A04
+# 8. B02
+# 9. B03
+# 10. A05
+# 11. A06
+# 12. A07
+# 13. A08
+# 14. A09
+    ## A10 -> in Pipeline but not running order pdf
+# 15. A11
+# 16. A12
+# 17. B04
+# 18. B05
+# 19. B06
+# 20. B08
+# 21. B09
+# 22. B10
+# 23. B32
+# 24. B35
+# 25. B34
+# 26. B36
+# 27. B21
+# 28. B22
+# 29. B23
+# 30. B24
+# 31. B25
+# 32. B27
 
+os.system('B00_SlimHurricaneDatabase.py')
+os.system('B01_MarkHurricaneProfiles.py')
+
+## A00
+#matlab_run('A00_processDACdata.m') # not in orignal pipelinee in script
+
+## A01
 for YEARS in YEARS_LIST:
     matlab_run('A01_pchipIntegration.m', {
         '<PY:YEARS>': f'{YEARS}',
@@ -66,6 +93,9 @@ matlab_run('A04_filterUsingMasks.m', {
     '<PY:WINDOW_SIZE>': '8',
 })
 
+os.system('B02_CreateHurricaneMask.py')
+os.system('B03_HurricanePairs.py')
+
 ## A05: Hurricane profiles
 matlab_run('A05_splitHurricaneProfiles.m', {
     '<PY:GRID_TEMP_FN>': './Data/gridTempProfHurricane_',
@@ -80,35 +110,15 @@ matlab_run('A05_splitHurricaneProfiles.m', {
     '<PY:MASK_VALUE>': '1',
     '<PY:MASK_NAME>': 'NoHurMask.csv',
     '<PY:WINDOW_SIZE>': '8',
-})
+}
 
-## A06 original
-# matlab_run('A06_estimateMeanField.m', {
-#     '<PY:START_YEAR>': '2007',
-#     '<PY:END_YEAR+1>': '2019',
-#     '<PY:WINDOW_SIZE>': '8',
-# })
-
-## A06 BG Isuuse with plus +
-
+## A06
 matlab_run('A06_estimateMeanField.m', {
     '<PY:START_YEAR>': '2007',
-    '<PY:END_YEAR+1>': '2023',
+    '<PY:END_YEAR+1>': '2019',
     '<PY:WINDOW_SIZE>': '8',
 })
 
-
-## Plotting
-matlab_run('A13_plotMeanField.m', {
-    '<PY:WINDOW_SIZE>': '8',
-})
-
-## A07: subtractMean for hurricanes
-matlab_run('A07_subtractMean.m', {
-    '<PY:GRID_TEMP_FN>':        './Data/gridTempProfFiltered_',
-    '<PY:RES_TEMP_FN>':         './Data/gridTempRes_',
-    '<PY:WINDOW_SIZE>': '8',
-})
 
 ## A07: subtractMean for non-hurricanes
 matlab_run('A07_subtractMean.m', {
@@ -117,35 +127,20 @@ matlab_run('A07_subtractMean.m', {
     '<PY:WINDOW_SIZE>': '8',
 })
 
-# ## A08 original
-# matlab_run('A08_divideDataToMonths.m', {
-#     '<PY:START_YEAR>': '2007',
-#     '<PY:END_YEAR>': '2018',
-#     '<PY:WINDOW_SIZE>': '8',
-# })
-
-
-## A08 BG
+## A08
 matlab_run('A08_divideDataToMonths.m', {
     '<PY:START_YEAR>': '2007',
-    '<PY:END_YEAR>': '2023',
+    '<PY:END_YEAR>': '2018',
     '<PY:WINDOW_SIZE>': '8',
 })
 
-## A09 original
-# matlab_run('A09_extendedData.m', {
-#     '<PY:START_YEAR>': '2007',
-#     '<PY:END_YEAR>': '2018',
-#     '<PY:WINDOW_SIZE>': '8',
-# })
-
-
-## A09 BG
+## A09
 matlab_run('A09_extendedData.m', {
     '<PY:START_YEAR>': '2007',
-    '<PY:END_YEAR>': '2023',
+    '<PY:END_YEAR>': '2018',
     '<PY:WINDOW_SIZE>': '8',
 })
+
 
 ## A10: WP
 matlab_run('A10_filterLocalMLESpaceTime.m', {
@@ -156,7 +151,10 @@ matlab_run('A10_filterLocalMLESpaceTime.m', {
     '<PY:OCEAN_BASIN>': '_WestPacific',
 })
 
-## A10: NA - original
+## add '_ArabianSea
+
+
+# ## A10: NA
 # matlab_run('A10_filterLocalMLESpaceTime.m', {
 #     '<PY:START_YEAR>': '2007',
 #     '<PY:END_YEAR>': '2018',
@@ -165,35 +163,15 @@ matlab_run('A10_filterLocalMLESpaceTime.m', {
 #     '<PY:OCEAN_BASIN>': '_NorthAtlantic',
 # })
 
-## A10: NA - BG
-matlab_run('A10_filterLocalMLESpaceTime.m', {
-    '<PY:START_YEAR>': '2007',
-    '<PY:END_YEAR>': '2023',
-    '<PY:WINDOW_SIZE>': '8',
-    '<PY:CENTER_MONTH>': '9',
-    '<PY:OCEAN_BASIN>': '_NorthAtlantic',
-})
-
-
-# A11 - original
-# OB = [
-#     # ('_NorthAtlantic', 'meshgrid(0.5:70.5,261.5:360.5)'),
-#     # ('_WestPacific',   'meshgrid(0.5:65.5,105.5:187.5)'),
-#     ('_AllBasins',     'meshgrid(linspace(-89.5,89.5,180),linspace(20.5,379.5,360))'),
-# ]
-
-
-# A11 - BG (need to add OMZ regions)
+# A11
 OB = [
     # ('_NorthAtlantic', 'meshgrid(0.5:70.5,261.5:360.5)'),
     # ('_WestPacific',   'meshgrid(0.5:65.5,105.5:187.5)'),
     ('_AllBasins',     'meshgrid(linspace(-89.5,89.5,180),linspace(20.5,379.5,360))'),
 ]
 
-
 start_year = '2007'
-# end_year = '2018'
-end_year = '2023'
+end_year = '2018'
 window_size = '8'
 window_size_gp = '8'
 center_month = '9'
@@ -216,24 +194,15 @@ for ob, ob_mesh in OB:
             '<PY:OB_MESHGRID>': ob_mesh,
         })
 
-# A12 - NA - original
-# OB = [
-#     # ('_NorthAtlantic', 'meshgrid(0.5:70.5,261.5:360.5)'),
-#     # ('_WestPacific',   'meshgrid(0.5:65.5,105.5:187.5)'),
-#     ('_AllBasins',     'meshgrid(linspace(-89.5,89.5,180),linspace(20.5,379.5,360))'),
-# ]
-
-# A12 - NA - BG (need to add OMZ regions)
+# A12 - NA
 OB = [
     # ('_NorthAtlantic', 'meshgrid(0.5:70.5,261.5:360.5)'),
     # ('_WestPacific',   'meshgrid(0.5:65.5,105.5:187.5)'),
     ('_AllBasins',     'meshgrid(linspace(-89.5,89.5,180),linspace(20.5,379.5,360))'),
 ]
 
-
 start_year = '2007'
-# end_year = '2018'
-end_year = '2023'
+end_year = '2018'
 window_size = '8'
 window_size_gp = '8'
 center_month = '9'
@@ -251,3 +220,35 @@ for ob, ob_mesh in OB:
         '<PY:OCEAN_BASIN>': ob,
         '<PY:OB_MESHGRID>': ob_mesh,
     })
+
+
+# files in both
+os.system('B04_ProfileDict.py')
+os.system('B05_AttachTemps.py')
+os.system('B06_KernelSmoothedEstimates.py')
+os.system('B08_CreateMleCoefficientDF.py')
+os.system('B09_DiagonalCovariance.py')
+os.system('B10_BlockCovariance.py')
+os.system('B32_TpsLoocvExtended.py')
+os.system('B35_TpsLoocvExtended.py')
+os.system('B34_AnalyzeLoocv.py')
+os.system('B36_TpsLoocvEstimates.py')
+os.system('B21_TPS_ThreePanel.py')
+os.system('B22_KS_ThreePanel.py')
+
+# plotting
+## files in gridded only (perhaps a lopp will or settings varible will need to be defined)
+
+if sys.argv[1] == "gridded"
+
+    os.system('B23_VerticalMixing_ThreePanel.py')
+    os.system('B24_TimeDepth_ThreePanel.py')
+    os.system('B25_DepthCrosstrack_ThreePanel.py')
+    os.system('B27_PlotTpsIsosurface.py')
+else:
+    os.system('C00_IntegratedThreePanel.py')
+
+# ploting integrated
+    
+
+    

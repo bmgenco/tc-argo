@@ -10,12 +10,28 @@ from tools import (
         matlab_to_datetime_v,
         )
 
-data_dir = '/run/media/addison/BackupsSSD/ocean/Data/'
+#data_dir = '/run/media/addison/BackupsSSD/ocean/Data/'
+data_dir = '/media/brandon/storage/wd_tc_argo/Data/'
+
+# original slection
+# year_pairs = (
+#         (2007, 2010),
+#         (2011, 2014),
+#         (2015, 2016),
+#         (2017, 2018),
+#     )
+
+# my increased years
 year_pairs = (
         (2007, 2010),
         (2011, 2014),
         (2015, 2016),
         (2017, 2018),
+        (2018, 2019),
+        (2019, 2020),
+        (2020, 2021), 
+        (2021, 2022),
+        (2022, 2023),
     )
 
 

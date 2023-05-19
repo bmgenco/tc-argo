@@ -1,8 +1,11 @@
 from datetime import datetime
+import time
 import os
 import subprocess
-
 from tools import replace
+
+import settings
+
 
 def matlab_run(script: str, replacement_dict: dict = {}):
     timestamp = datetime.now()
@@ -22,27 +25,31 @@ def matlab_run(script: str, replacement_dict: dict = {}):
     os.remove(f_out)
     return 
 
-## A01 original
-# YEARS_LIST = [
-#         '2007_2010',
-#         '2011_2014',
-#         '2015_2016',
-#         '2017_2018',
-# ]
+##### Pipeline (as listed in orginal):
+    
+    
 
-## A01 BG
-YEARS_LIST = [
-        '2007_2010',
-        '2011_2014',
-        '2015_2016',
-        '2017_2018',
-        '2018_2019',
-        '2019_2020',
-        '2020_2021',
-        '2021_2022',
-        '2022_2023',       
-]
 
+start= time.time()
+import B00_SlimHurricaneDatabase
+end= time.time()
+print("B00 runtime:", end - start)
+
+
+start= time.time()
+import B01_MarkHurricaneProfiles
+end= time.time()
+print("B01 runtime:", end - start)
+
+
+matlab_run('A00_subtractMean.m', {
+    '<PY:GRID_TEMP_FN>':        './Data/gridTempProfFiltered_',
+    '<PY:RES_TEMP_FN>':         './Data/gridTempRes_',
+    '<PY:WINDOW_SIZE>': '8',
+})
+
+
+start = time.time()
 for YEARS in YEARS_LIST:
     matlab_run('A01_pchipIntegration.m', {
         '<PY:YEARS>': f'{YEARS}',
@@ -50,6 +57,9 @@ for YEARS in YEARS_LIST:
         '<PY:GRID_LOWER>': '10',
         '<PY:GRID_UPPER>': '200',
     })
+end=time.time()
+print("B00 runtime:", end - start)
+
 
 ## A02
 matlab_run('A02_concatenateArrays.m')

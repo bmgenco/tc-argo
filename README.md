@@ -4,3 +4,14 @@ cloned from https://github.com/huisaddison/tc-ocean-methods/ for use in oxygen c
 'original' directory is Addison's very thorough work.
 
 As of the first iteration I with house my hacks semi-sperately (other directories). As time goes on it will get uglier, and so I encourage any who stumble upon this repo to use his original work. See his accompanying publications 
+
+-current version wil not run as 1/2 though converting harcoding to dynamic coding of (a) direcotires and (b) master varible script pulled out of individual scripts
+-
+-using linux bash shell script integrated with python
+Shell script 'run_pipeline" copies settings and pipepline. py., to original directory srtucre, and saves a log file diffrent runs are stored in that directory
+
+-planned versions:
+-run(1) test dynamic version in ETNP default years
+-run(2) add new years
+-run(3) select significant profiles
+-run(4) switch to Oxygen
