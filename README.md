@@ -3,7 +3,7 @@
 cloned from https://github.com/huisaddison/tc-ocean-methods/ for use in oxygen changes (ETNP OMZ) in argo tc analyis for authors 
 dissertation. See: https://bemanlab.org/
 
-'original' directory is Addison's very thorough work -> submodule -> for posterity not functionality as of yet. As this is only the first iteration I encourage any who stumble upon this repo to use his original work. See his accompanying publications.
+'original' directory is Addison's very thorough work -> submodule -> for posterity not functionality as of yet. Since this is only the first iteration I encourage any who stumble upon this repo to use his original work. See his accompanying publications.
 
 -current version will not run as 1/2 way thru converting hard-coding to dynamic coding of (a) directories and (b) master variable script pulled out of individual scripts
 
