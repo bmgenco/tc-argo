@@ -1,1 +1,0 @@
-../pipeline-gridded/B09_DiagonalCovariance.py
