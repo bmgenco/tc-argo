@@ -1,7 +1,9 @@
+from settings import *
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle as pkl
 import sys
+os.chdir(main_wd)
 sys.path.append('../implementations/')
 from implementation_tools import (
     temp_diff,

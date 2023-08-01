@@ -2,6 +2,9 @@
 close all;
 clear;
 
+%% -> settings.py
+cd(<PY:MAIN_WD>)
+
 load(['./Data/gridTempProf.mat']);
 
 windowSize = <PY:WINDOW_SIZE>;

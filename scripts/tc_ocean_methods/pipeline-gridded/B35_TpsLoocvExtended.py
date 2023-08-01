@@ -1,3 +1,4 @@
+from settings import *
 from itertools import product
 import argparse
 import numpy as np
@@ -5,6 +6,7 @@ import os
 import pandas as pd
 import pickle as pkl
 import sys
+os.chdir(main_wd)
 sys.path.append('../implementations/')
 
 from Regressors import ThinPlateSpline

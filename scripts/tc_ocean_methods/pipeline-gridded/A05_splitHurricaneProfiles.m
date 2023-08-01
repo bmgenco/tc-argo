@@ -2,6 +2,9 @@
 close all;
 clear;
 
+%% -> settings.py
+cd(<PY:MAIN_WD>)
+
 windowSize = <PY:WINDOW_SIZE>;
 minNumberOfObs = 20;
 load(['./Data/gridTempProfFiltered_',num2str(windowSize), '_',num2str(minNumberOfObs),'.mat']);

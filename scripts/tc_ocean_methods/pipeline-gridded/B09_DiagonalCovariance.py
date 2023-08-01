@@ -3,6 +3,7 @@ author: addison@stat.cmu.edu
 
 Constructs a diagonal covariance matrix in the form of a DataFrame column.
 '''
+from settings import *
 import numpy as np
 import pandas as pd
 import pickle as pkl
@@ -10,6 +11,9 @@ import pickle as pkl
 from itertools import product
 
 from tools import covariance_matrix
+
+os.chdir(main_wd)
+
 
 INTEGRATION_LENGTH = 190
 data_dir = 'Data/'

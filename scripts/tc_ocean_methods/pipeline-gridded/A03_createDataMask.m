@@ -1,12 +1,16 @@
 close all;
 clear;
 
+%% -> settings.py
+cd(<PY:MAIN_WD>)
+
 load(['./Data/gridTempProf.mat']);
 
 [latGrid,longGrid] = meshgrid(linspace(-89.5,89.5,180),linspace(20.5,379.5,360));
 
 %% Count number of data points for each month and year within each window
 
+%% -> settings.py
 windowSize = <PY:WINDOW_SIZE>;
 
 % Enable wrap around by duplicating boundary data

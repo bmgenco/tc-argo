@@ -3,6 +3,7 @@ author: addison@stat.cmu.edu
 
 Construct block diagonal covariance matrices.
 '''
+from settings import *
 import numpy as np
 import pandas as pd
 import pickle as pkl
@@ -14,6 +15,8 @@ from functools import partial
 from itertools import product
 
 from tools import covariance_matrix
+
+os.chdir(main_wd)
 
 CPU_COUNT = multiprocessing.cpu_count()
 

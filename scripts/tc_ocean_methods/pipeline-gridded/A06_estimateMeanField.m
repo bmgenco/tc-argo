@@ -1,6 +1,9 @@
 close all;
 clear;
 
+%% -> settings.py
+cd(<PY:MAIN_WD>)
+
 windowSize = <PY:WINDOW_SIZE>;
 
 cp0 = 3989.244;

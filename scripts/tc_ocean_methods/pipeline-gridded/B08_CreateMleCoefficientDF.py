@@ -1,9 +1,12 @@
+from settings import *
 import argparse
 import h5py
 import numpy as np
 import pandas as pd
 import pickle as pkl
 from tools import create_ArgoProfileID
+
+os.chdir(main_wd)
 
 parser = argparse.ArgumentParser(description='Create GP coefficient dataframe')
 parser.add_argument('--integrated', dest='mode', action='store_const',

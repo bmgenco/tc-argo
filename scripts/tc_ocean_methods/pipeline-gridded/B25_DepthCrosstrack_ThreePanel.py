@@ -1,3 +1,4 @@
+from settings import *
 import matplotlib as mpl
 import matplotlib.cm as cm
 import matplotlib.pyplot as plt
@@ -8,6 +9,8 @@ import pandas as pd
 import pickle as pkl
 import os
 import sys
+
+os.chdir(main_wd)
 sys.path.append('../implementations/')
 import plot_config
 

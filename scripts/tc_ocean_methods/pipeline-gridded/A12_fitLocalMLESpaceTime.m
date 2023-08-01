@@ -1,7 +1,9 @@
 close all;
 clear;
 
-%% Load data
+%% Load dat%% -> settings.py
+cd(<PY:MAIN_WD>)
+
 hprefix='<PY:GRID_TEMP_FN>';
 depthIdx=<PY:DEPTH_INDEX>;
 windowSize=<PY:WINDOW_SIZE>;

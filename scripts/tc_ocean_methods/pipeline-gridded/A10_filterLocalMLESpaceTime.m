@@ -1,6 +1,9 @@
 close all;
 clear;
 
+%% -> settings.py
+cd(<PY:MAIN_WD>)
+
 windowSize = <PY:WINDOW_SIZE>;
 minNumberOfObs = 20;
 region = '<PY:OCEAN_BASIN>';

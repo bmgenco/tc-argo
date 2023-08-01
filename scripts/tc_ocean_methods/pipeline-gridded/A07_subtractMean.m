@@ -1,6 +1,9 @@
 close all;
 clear;
 
+%% -> settings.py
+cd(<PY:MAIN_WD>)
+
 %% Load data
 
 windowSize = <PY:WINDOW_SIZE>;

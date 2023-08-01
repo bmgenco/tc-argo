@@ -1,3 +1,4 @@
+from settings import *
 import argparse
 import matplotlib as mpl
 import matplotlib.cm as cm
@@ -9,7 +10,11 @@ import pandas as pd
 import pickle as pkl
 import os
 import sys
+
+os.chdir(main_wd)
 sys.path.append('../implementations/')
+
+
 
 from implementation_tools import (
     grid,

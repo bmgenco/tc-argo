@@ -1,6 +1,8 @@
 close all;
 clear;
 
+%% -> settings.py
+cd(<PY:MAIN_WD>)
 
 %% Plotting
 

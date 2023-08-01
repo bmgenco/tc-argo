@@ -1,3 +1,4 @@
+from settings import *
 import matplotlib as mpl
 import numpy as np
 import pickle as pkl
@@ -7,6 +8,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.colors import LightSource
 
 from skimage import measure
+os.chdir(main_wd)
 
 # Code attribution: https://stackoverflow.com/questions/56864378/how-to-light-and-shade-a-poly3dcollection
 # Used via SE's default MIT license: https://meta.stackexchange.com/questions/272956/a-new-code-license-the-mit-this-time-with-attribution-required
