@@ -5,15 +5,9 @@ dissertation. See: https://bemanlab.org/
 
 'original' directory is Addison's very thorough work -> submodule -> for posterity not functionality as of yet. Since this is only the first iteration I encourage any who stumble upon this repo to use his original work. See his accompanying preprint.
 
-<<<<<<< HEAD
 -current version is not fully functional! As of now ~ pre Alpha development. Its only for backup and continued work on my other machines 
 
 -using Linux bash shell script integrated with python Shell script 'run_pipeline" copies settings and pipepline.py, to Working Directory , and saves a log file with different runs are stored in that a separate directory
-=======
--current version will not run as 1/2 way thru converting hard-coding to dynamic coding of (a) directories and (b) master variables macro  pulled out of individual scripts
-
--using Linux bash shell script integrated with python Shell script 'run_pipeline" copies settings and pipepline.py, to Working Directory , and saves a log file with different runs, which are stored in that that/a separate directory
->>>>>>> d67386dd9616e14bcb584694f5024a3a3e8c7ab0
 
 -update settings for main working and data directories to suit your local machine.
 
