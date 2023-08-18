@@ -10,10 +10,13 @@ os.chdir(main_wd)
 ## -> settings.py
 track_dir = tracks_d
 
-AL = pd.read_csv(f'{track_dir}/HURDAT_ATLANTIC.csv')
-del AL['Unnamed: 0']
+#testn run1 only eastern pacific
 EP = pd.read_csv(f'{track_dir}/HURDAT_PACIFIC.csv')
 del EP['Unnamed: 0']
+
+'''
+AL = pd.read_csv(f'{track_dir}/HURDAT_ATLANTIC.csv')
+del AL['Unnamed: 0']
 WP = pd.read_csv(f'{track_dir}/JTWC_WESTPACIFIC.csv')
 del WP['Unnamed: 0']
 SH = pd.read_csv(f'{track_dir}/JTWC_SOUTHERNHEMISPHERE.csv')
@@ -22,7 +25,11 @@ IO = pd.read_csv(f'{track_dir}/JTWC_INDIANOCEAN.csv')
 del IO['Unnamed: 0']
 
 Hurricanes = pd.concat([AL, EP, WP, SH, IO])
-Hurricanes = Hurricanes[Hurricanes['SEASON'] >= 2007]
+'''
+Hurricanes=EP
+#Hurricanes = Hurricanes[Hurricanes['SEASON'] >= 2007]
+## -> settings.py
+Hurricanes = Hurricanes[Hurricanes['SEASON'] >= start_year]
 Hurricanes = Hurricanes.reset_index(drop=True)
 Hurricanes['Timestamp_PD'] = Hurricanes['TIMESTAMP'].apply(
         lambda x: pd.Timestamp(x))

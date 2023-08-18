@@ -12,15 +12,9 @@ commented out in scripts as (## or %%) -> settings.py
 @author: brandon
 """
 import os
-import sys
 
-
-# absolute paths
-##  data files direcotry:
-STORAGE_WD='/media/brandon/data_drive/tc_argo_data/'
-## matlab install
-sys.path.append('/home/brandon/anaconda3/envs/argo/lib/python3.10/site-packages/matlabengineforpython-9.13-py3.10.egg/matlab/')
-
+#  data files direcotry:
+STORAGE_WD='/media/brandon/data_drive/tc_argo_data'
 
 # Python scripts variables:
 ## directories
@@ -29,27 +23,17 @@ script_d= os.getcwd() #script working directory
 main_wd=os.path.dirname(script_d) # use in matlab and python main WD
 
 
-data_wd=main_wd+'/Data/' #dir for intermediate script products in WD
+data_wd=main_wd+'Data/' #dir for intermediate script products in WD
 tracks_d=STORAGE_WD+'tracks/'
 
 # Matlab scripts variables:
 
-## directories - add qoutes for writng to matlab
-### will need to drop for pyhon direcotories
-MAIN_WD=f'"{main_wd}"'
-ARGO_D=STORAGE_WD+'dac/'
-ARGO_D=f'"{ARGO_D}"'
-TRACK_D=STORAGE_WD +'tracks/'
-TRACK_D=f'"{TRACK_D}"'
-DATA_D=f'"{data_wd}"'    
-
-'''
 ## directories
 MAIN_WD=main_wd
 ARGO_D=STORAGE_WD+'dac/'
 TRACK_D=STORAGE_WD +'tracks/'
 DATA_D=data_wd
-'''
+
 
 
 ## variables

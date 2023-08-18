@@ -1,0 +1,47 @@
+
+pipeline-> A00:
+
+
+"To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+  0%[>                                                  ]
+Error using internal.matlab.imagesci.nc/openToRead
+Could not open /media/brandon/data_drive/tc_argo_data/dac/coriolis_old/1900602/profiles/../1900602_meta.nc for
+reading.
+
+Error in internal.matlab.imagesci.nc (line 124)
+                    this.openToRead();
+
+Error in ncread (line 71)
+ncObj   = internal.matlab.imagesci.nc(ncFile);
+
+Error in temp_matlab_20230807_115028 (line 158)
+    profTransSys = ncread([fileList(iFile).folder,'/../',num2str(profFloatID),'_meta.nc'],'TRANS_SYSTEM');
+
+Error in run (line 91)
+evalin('caller', strcat(script, ';'));"
+
+
+20223_08_08
+from sheel now works got: 
+ 0%[>                                                  ]
+Error using internal.matlab.imagesci.nc/openToRead
+Could not open
+/media/brandon/data_drive/tc_argo_data/dac/coriolis_old/1900602/profiles/../1900602_meta.nc for
+reading.
+
+Error in internal.matlab.imagesci.nc (line 124)
+                    this.openToRead();
+
+Error in ncread (line 71)
+ncObj   = internal.matlab.imagesci.nc(ncFile);
+
+Error in temp_matlab_20230808_125942 (line 166)
+    profTransSys = ncread([fileList(iFile).folder,'/../',num2str(profFloatID),'_meta.nc'],'TRANS_SYSTEM');
+
+Error in run (line 91)
+evalin('caller', strcat(script, ';'));
+
+
+

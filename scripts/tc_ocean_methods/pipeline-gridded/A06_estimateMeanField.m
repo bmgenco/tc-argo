@@ -3,8 +3,9 @@ clear;
 
 %% -> settings.py
 cd(<PY:MAIN_WD>)
-
+addpath(genpath(pwd))
 windowSize = <PY:WINDOW_SIZE>;
+minNumberOfObs = <PY:MIN_OBS>;
 
 cp0 = 3989.244;
 rho0 = 1030;
@@ -12,7 +13,7 @@ rho0 = 1030;
 formatIn = 'dd-mmm-yyyy';
 startDay = datenum('01-Jan-<PY:START_YEAR>', formatIn);
 endDay = datenum('01-Jan-<PY:END_YEAR+1>', formatIn);
-minNumberOfObs = 20;
+
 midJulDay = (endDay - startDay) / 2 + startDay
 
 

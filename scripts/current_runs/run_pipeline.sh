@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!usr/bin/sudo bash 
 set -e   
 
 # (1) copies scipts into wd direcotry
@@ -17,10 +17,20 @@ conda activate argo
 
 dir=$PWD
 parentdir="$(dirname "$dir")"
+
+## creating and mounting esxtrenal HD
 storagedir='/media/brandon/data_drive/tc_argo_data'
 
+#sudo mkdir -p /media/brandon/data_drive
+#sudo mount -a /dev/sdb /media/brandon/data_drive
 
-# runs direcory in wd chosse one
+#cd /media/brandon/data_drive/tc_argo_data/
+#sudo chmod -R -v 777 *
+
+# note need to change permissions for matlab to access HD
+
+
+# runs direcory in wd choose one
 #rundir=$parentdir/runs/run_$(date +"%Y%m%d"_"%H%M")
 
 # runs in external HD
@@ -36,6 +46,8 @@ mkdir $rundir
 current='../scripts/tc_ocean_methods/pipeline-gridded/'
 arg1="gridded"
 impl='../scripts/tc_ocean_methods/implementations'
+
+
 
 
 #current='../scripts/tc_ocean_methods/pipeline-integrated/'
@@ -54,8 +66,11 @@ mkdir Output/Figures_TPS_ThreePanel
 printf "run time start: " > log.txt
 date >> log.txt
 
-cp -R $impl implementations
-cp -RT $current current_scripts
+# need to copy symbolic links as real files wil be redundant for some scripts
+cp -RL $impl implementations
+cp -RTL $current current_scripts
+
+cp implementations/tools.py current_scripts/tools.py
 
 cp current_settings.py current_scripts/settings.py
 cp current_pipeline.py current_scripts/pipeline.py
@@ -68,7 +83,8 @@ cd current_scripts
 echo "started pipeline at:" 
 date
 
-#python pipeline.py $arg1
+
+python pipeline.py $arg1
 cd $dir
 
 printf "run time end: " >> log.txt
@@ -78,9 +94,11 @@ echo "Elapsed Time: $(($end-$start)) minutes" >> log.txt
 
 mv log.txt $rundir/log_`date +%Y%m%d`.txt
 mv Output $rundir
+mv Data $rundir
 mv Results $rundir
 
 mv -T $rundir $storagedir/runs/$rundir 
+
 
 rm -R -- */
 shopt -s extglob

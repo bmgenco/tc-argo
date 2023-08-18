@@ -3,13 +3,14 @@ clear;
 
 %% -> settings.py
 cd(<PY:MAIN_WD>)
-
+addpath(genpath(pwd))
+windowSize = <PY:WINDOW_SIZE>;
 %% Plotting
 
 cp0 = 3989.244;
 rho0 = 1030;
 
-windowSize = <PY:WINDOW_SIZE>;
+%% change figure directory here
 FigFolder = 'Figures_Debug';
 load(['./Results/meanField_',num2str(windowSize),'_20.mat']);
 load(['./Data/dataMask_',num2str(windowSize),'_20.mat']);

@@ -1,14 +1,15 @@
-
 close all;
 clear;
 
 %% -> settings.py
 cd(<PY:MAIN_WD>)
+addpath(genpath(pwd))
 
 load(['./Data/gridTempProf.mat']);
 
+%% -> settings.py
 windowSize = <PY:WINDOW_SIZE>;
-minNumberOfObs = 20;
+minNumberOfObs = <PY:MIN_OBS>;
 
 load(['./Data/dataMask_',num2str(windowSize), '_',num2str(minNumberOfObs),'.mat']);
 

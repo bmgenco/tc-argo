@@ -3,12 +3,13 @@ clear;
 
 %% Load dat%% -> settings.py
 cd(<PY:MAIN_WD>)
+addpath(genpath(pwd))
 
 hprefix='<PY:GRID_TEMP_FN>';
 depthIdx=<PY:DEPTH_INDEX>;
 windowSize=<PY:WINDOW_SIZE>;
 windowSizeGP=<PY:WINDOW_SIZE_GP>;
-minNumberOfObs = 20;
+minNumberOfObs = <PY:MIN_OBS>;
 month = <PY:CENTER_MONTH>;
 startYear =<PY:START_YEAR>;
 endYear =<PY:END_YEAR>;
@@ -28,6 +29,7 @@ elseif strcmp(region, '_NorthAtlantic')
         latMax = 71;
         longMin = 262;
         longMax = 361;
+%% here add EP
 elseif strcmp(region, '_AllBasins')
         latMin = -90;
         latMax = 90;

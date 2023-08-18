@@ -16,6 +16,7 @@ args = parser.parse_args()
 
 data_dir = 'Data/'
 results_dir = 'Results/'
+## harcoded
 window_size_gp = 5
 
 if args.mode == 'gridded':

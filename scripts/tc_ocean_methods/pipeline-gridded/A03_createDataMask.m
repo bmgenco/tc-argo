@@ -3,6 +3,10 @@ clear;
 
 %% -> settings.py
 cd(<PY:MAIN_WD>)
+addpath(genpath(pwd))
+
+windowSize = <PY:WINDOW_SIZE>;
+minNumberOfObs = <PY:MIN_OBS>;
 
 load(['./Data/gridTempProf.mat']);
 
@@ -10,8 +14,7 @@ load(['./Data/gridTempProf.mat']);
 
 %% Count number of data points for each month and year within each window
 
-%% -> settings.py
-windowSize = <PY:WINDOW_SIZE>;
+
 
 % Enable wrap around by duplicating boundary data
 leftBoundaryIdx = find(profLongAggrSel <= 20 + windowSize);
@@ -49,7 +52,8 @@ for iGrid = 1:nGrid
         profYearAggrWindow(iProf) = temp(1);
         profMonthAggrWindow(iProf) = temp(2);
     end
-    
+
+%% todo->settings/macro. var below
     years = 2007:2018;
     yearMonthCountsWindow = zeros(10,12);
     for iYear=1:10
@@ -65,7 +69,7 @@ parfor_progress(0);
 
 %% Form data-driven landmask
 
-minNumberOfObs = 20;
+
 
 dataMask = zeros(size(latGrid));
 

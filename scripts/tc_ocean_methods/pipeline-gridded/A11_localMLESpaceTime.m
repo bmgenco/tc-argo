@@ -3,16 +3,17 @@ clear;
 
 %% -> settings.py
 cd(<PY:MAIN_WD>)
+addpath(genpath(pwd))
 
 windowSize = <PY:WINDOW_SIZE>;
-minNumberOfObs = 20;
+minNumberOfObs = <PY:MIN_OBS>;
 % region = '_WesternPacific';
 region = '<PY:OCEAN_BASIN>';
-
 month = <PY:CENTER_MONTH>;
 
 startYear = <PY:START_YEAR>;
 endYear = <PY:END_YEAR>;
+%from implementation tools or tools?
 depthIdx = <PY:DEPTH_INDEX>;
 
 [latGrid,longGrid] = <PY:OB_MESHGRID>;
@@ -29,6 +30,7 @@ nll = zeros(size(latGrid));
 nResGrid = zeros(size(latGrid));
 
 % Amended to smaller window size
+%% why???
 windowSizeGP = 5;
 
 % Discard previous iterIdx, if it exists

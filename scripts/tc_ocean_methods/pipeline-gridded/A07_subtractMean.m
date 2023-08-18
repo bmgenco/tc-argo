@@ -3,11 +3,12 @@ clear;
 
 %% -> settings.py
 cd(<PY:MAIN_WD>)
+addpath(genpath(pwd))
+windowSize = <PY:WINDOW_SIZE>;
+minNumberOfObs = <PY:MIN_OBS>;
 
 %% Load data
 
-windowSize = <PY:WINDOW_SIZE>;
-minNumberOfObs = 20;
 
 % Load mean field coefficients (learned from non-hurricane observations)
 load(['./Results/meanField_',num2str(windowSize),'_',...

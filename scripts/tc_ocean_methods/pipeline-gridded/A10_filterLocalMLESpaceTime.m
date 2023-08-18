@@ -3,12 +3,12 @@ clear;
 
 %% -> settings.py
 cd(<PY:MAIN_WD>)
-
+addpath(genpath(pwd))
 windowSize = <PY:WINDOW_SIZE>;
-minNumberOfObs = 20;
+minNumberOfObs =<PY:MIN_OBS>;
 region = '<PY:OCEAN_BASIN>';
 
-% Center on September
+%% AD -> Center on September
 month = <PY:CENTER_MONTH>;
 
 startYear = <PY:START_YEAR>;
@@ -37,6 +37,7 @@ elseif strcmp(region, '_NorthAtlantic')
     filterMask = zeros(180, 360);
     filterMask(1:180, 1:340) = NotPacific(1:180, 21:360);
     filterMask(1:180, 341:360) = NotPacific(1:180, 1:20);
+%% add here!    
 else 
     disp('Region unrecognized');
     exit;

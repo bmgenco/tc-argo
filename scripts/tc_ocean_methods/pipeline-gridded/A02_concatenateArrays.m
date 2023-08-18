@@ -1,9 +1,11 @@
 prefix = './Data/gridTempProf';
 
+%% todo->settings/macro. var below
 A = load([prefix, '_2007_2010.mat']);
 B = load([prefix, '_2011_2014.mat']);
 C = load([prefix, '_2015_2016.mat']);
 D = load([prefix, '_2017_2018.mat']);
+
 gridTempProf = cat(1, A.gridTempProf, B.gridTempProf, C.gridTempProf, D.gridTempProf);
 profLatAggrSel = cat(2, A.profLatAggrSel, B.profLatAggrSel, C.profLatAggrSel, D.profLatAggrSel);
 profLongAggrSel = cat(2, A.profLongAggrSel, B.profLongAggrSel, C.profLongAggrSel, D.profLongAggrSel);

@@ -30,7 +30,7 @@ os.chdir(main_wd)
 
 df_lst = []
 for (sy, ey) in year_pairs:
-    path = data_d + f'Argo_data_aggr_{sy}_{ey}.mat'
+    path = data_wd + f'Argo_data_aggr_{sy}_{ey}.mat'
     f = h5py.File(path)
     lons =              conform_lons(np.array(f['profLongAggr'])).flatten()
     lats =              np.array(f['profLatAggr']).flatten()

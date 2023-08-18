@@ -1,12 +1,13 @@
-
 close all;
 clear;
 
 %% -> settings.py
 cd(<PY:MAIN_WD>)
-
+addpath(genpath(pwd))
+minNumberOfObs = <PY:MIN_OBS>;
 windowSize = <PY:WINDOW_SIZE>;
-minNumberOfObs = 20;
+
+
 load(['./Data/gridTempProfFiltered_',num2str(windowSize), '_',num2str(minNumberOfObs),'.mat']);
 HurMask = readmatrix('./Masks/<PY:MASK_NAME>')';
 

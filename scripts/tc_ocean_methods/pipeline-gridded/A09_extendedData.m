@@ -3,9 +3,9 @@ clear;
 
 %% -> settings.py
 cd(<PY:MAIN_WD>)
-
+addpath(genpath(pwd))
 windowSize = <PY:WINDOW_SIZE>;
-minNumberOfObs = 20;
+minNumberOfObs =<PY:MIN_OBS>;
 
 load_prefix = ['./Data/Monthly/gridTempResNonHurricane_',...
     num2str(windowSize),'_',num2str(minNumberOfObs),...

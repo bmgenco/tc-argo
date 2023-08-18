@@ -6,26 +6,19 @@ clear;
 %cd('./Argo/'); % AH old code
 
 scriptDir=pwd;
-argoDir = <PY:ARGO_D>;
-mainDir = <PY:MAIN_WD>;
+argoDir = "/media/brandon/data_drive/tc_argo_data/dac/";
+mainDir = "/home/brandon/vestawd/tc-argo/wd";
 
 addpath(genpath(argoDir));
 addpath(genpath(mainDir));
 addpath(genpath(pwd));
-cd(scriptDir);
 
+%cd();
+cd("/media/brandon/data_drive/tc_argo_data/dac/");
 
-cd('/');
-cd(argoDir);
 fileListDelayed = dir('**/D*.nc');
 fileListRealTime = dir('**/R*.nc');
 
-
-
-%fileListDelayed = dir(strcat(argoDir, '**/D*.nc'));
-%fileListRealTime = dir(strcat(argoDir,'**/R*.nc'));
-
-cd('/');
 cd(scriptDir);
 %cd(mainDir);
 %% -> settings.py
@@ -38,8 +31,8 @@ cd(scriptDir);
 fileList = [fileListDelayed; fileListRealTime];
 nFile = length(fileList);
 
-startYear = <PY:START_YEAR>;
-endYear = <PY:END_YEAR>;
+startYear = 2007;
+endYear = 2018;
 
 profPresAggr = {};
 profTempAggr = {};

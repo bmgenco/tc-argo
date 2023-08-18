@@ -8,25 +8,29 @@ from processing import Processor
 
 os.chdir(main_wd)
 
+
+
 def process_hurricanes(fn, prefix):
     # Read hurricane track data
     dataframe = pd.read_csv(fn)
     del dataframe['Unnamed: 0']
 
     # Specify hurricane to examine
+    ## todo->settings/macro. var below
     hurricanes = list(set(np.array(dataframe[
-            dataframe['SEASON'] >= 2007
+            # dataframe['SEASON'] >= 2007
+            dataframe['SEASON'] >= start_year
         ]['ID'])))
     hurricanes.sort()
     n = len(hurricanes)
-
+    '''
     year_pairs = (
             (2007, 2010),
             (2011, 2014),
             (2015, 2016),
             (2017, 2018),
         )
-
+    '''
     df_lst = []
     for sy, ey in year_pairs:
         f = h5py.File(prefix + f'Argo_data_aggr_{sy}_{ey}.mat')
