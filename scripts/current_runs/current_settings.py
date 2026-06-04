@@ -15,11 +15,15 @@ import os
 import sys
 
 
-# absolute paths
+# absolute paths (override via environment variables or .env file for portability)
 ##  data files direcotry:
-STORAGE_WD='/media/brandon/data_drive/tc_argo_data/'
+STORAGE_WD = os.environ.get('STORAGE_WD', '/media/brandon/data_drive/tc_argo_data/')
 ## matlab install
-sys.path.append('/home/brandon/anaconda3/envs/argo/lib/python3.10/site-packages/matlabengineforpython-9.13-py3.10.egg/matlab/')
+MATLAB_ENGINE_PATH = os.environ.get(
+    'MATLAB_ENGINE_PATH',
+    '/home/brandon/anaconda3/envs/argo/lib/python3.10/site-packages/matlabengineforpython-9.13-py3.10.egg/matlab/'
+)
+sys.path.append(MATLAB_ENGINE_PATH)
 
 
 # Python scripts variables:

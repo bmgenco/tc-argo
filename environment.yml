@@ -1,0 +1,23 @@
+name: argo
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.10
+  - numpy
+  - pandas
+  - scipy
+  - xarray
+  - matplotlib
+  - requests
+  - h5py
+  - numba
+  - cmocean
+  - plotly
+  - gsw            # TEOS-10 Gibbs SeaWater (Python replacement for MATLAB GSW toolbox)
+  - netcdf4
+  - pip
+  # MATLAB Engine for Python must be installed separately:
+  #   cd <MATLAB_ROOT>/extern/engines/python
+  #   python setup.py install
+  # See: https://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html

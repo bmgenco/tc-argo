@@ -3,3 +3,4 @@ wd
 data
 .RData
 .Rhistory
+.env
